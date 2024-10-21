@@ -14,13 +14,13 @@ int main(int argc, char *argv[])
       return 2;
    }
 
-   fp2 = fopen(argv[2], "a");
+   fp2 = fopen(argv[2], "a"); //"a" 추가 쓰기 (파일이 있으면: 기존 내용 뒤에 추가)
    if (fp2 == NULL) {
       fprintf(stderr, "File %s Open Error\n", argv[2]);
       return 3;
    }
 
-   while ((c = fgetc(fp1)) != EOF) {
+   while ((c = fgetc(fp1)) != EOF) { //fp1(file1)을 문장끝일떄 까지 fp2에 복붙
       fputc(c, fp2);
    }
 

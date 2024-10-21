@@ -53,8 +53,8 @@ int main(int argc, char *argv[]) {
     } else if(strchr(range,',') != NULL) { //",": 줄 번호 리스트
         int line;
         char *lineNum = strtok(range, ","); //문자열을 ","기준으로 토큰 단위로 자르기
-        while(lineNum != NULL) {
-            line = atoi(lineNum);
+        while(lineNum != NULL) { //lineNum 값이 NULL일때 까지 실행
+            line = atoi(lineNum); //atoi: 문자열을 정수로 변환
             if(line > 0 && line <= row) { //입력 줄이 0보다 크고 전체 열 보다 같거나 작을떄
                 printf("%s\n", savedText[line - 1]);
             } else {
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
             lineRange = strtok(NULL,"-");
             if(lineRange != NULL) { //문자끝NULL을 반환하기 전까지
                 end = atoi(lineRange);
-                if(start > 0 && start <= end && end && row) { //범위가 제대로 지정되었는지 확인
+                if(start > 0 && start <= end && end && row) { //end && row: end와 row 값이 0이 아닌지
                     for(int i = start - 1; i < end; i++) {
                     printf("%s\n", savedText[i]);
                     } 
