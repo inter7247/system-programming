@@ -1,0 +1,24 @@
+$ (echo START1; sleep 10; echo DONE1) &
+[1] 26439
+START1
+
+$ (echo START2; sleep 10; echo DONE2) &
+[2] 26478
+START2
+
+$ kill -KILL 26439
+
+= -KILL 즉시 종료 시키는 명령어.  DONE1 출력 안함 
+
+$ kill -STOP 26439
+-bash: kill: (26439) - No such process
+[1]-  Killed                  ( echo START1; sleep 30; echo DONE1 )
+
+= -STOP 일시 중지 시키는 명령어. 해당 프로세스가 없으므로 무효처리
+
+$ kill -CONT 26439
+-bash: kill: (26439) - No such process
+
+= -CONT 일시 중지된 프로세스를 다시 실행하는 명령어. 해당 프로세스가 없으므로 무효처리
+
+DONE2
